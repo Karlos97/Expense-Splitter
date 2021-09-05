@@ -1,0 +1,28 @@
+.summary-overview{
+    overflow-y: scroll;
+    max-height: 25rem;
+margin-left: 1.5rem;
+}
+
+
+.expenses-summary{
+    width: 30%;
+    display: inline-block;
+    margin: 1rem .5rem 1rem .5rem;
+    /* display: flex;
+    align-self: center;     */
+}
+
+.owe{
+    font-size: 0.65rem;
+color: red;
+}
+.owes{
+    color: green;
+    font-size: 0.65rem;
+
+}
+
+p{
+    font-size: 0.8rem;
+}

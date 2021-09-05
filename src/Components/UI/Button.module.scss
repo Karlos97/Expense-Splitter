@@ -1,0 +1,42 @@
+$hoverCol: #fff;
+$primary: #55acee;
+$secondary: #9b9b9b;
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  display: inline-block;
+
+  &-big {
+    margin: 0 4rem 0 4rem;
+    border-radius: 0.5rem;
+    padding: 0 2rem 0 2rem;
+    font-size: 1.6rem;
+    transition: 0.3s;
+
+    color: $primary;
+    border: 2px $primary solid;
+    background-color: inherit;
+
+  }
+
+  &-small {
+    margin: 0 1rem 0 1rem;
+    border-radius: 0.2rem;
+    padding: 0 0.4rem 0 0.4rem;
+    font-size: 0.7rem;
+    color: $secondary;
+    border: 2px $secondary solid;
+    background-color: inherit;
+  }
+  &:hover {
+    background-color: $primary;
+    color: $hoverCol;
+  }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: .3rem .2rem 2.2rem .1rem rgba(0, 0, 0, 0.2);
+}
+}

@@ -1,0 +1,11 @@
+$gray: #9b9b9b;
+
+.select {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 15rem;
+  height: 2rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(#000000, 0.2);
+  color: $gray;
+}

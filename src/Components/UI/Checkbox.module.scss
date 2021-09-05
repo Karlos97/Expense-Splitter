@@ -1,0 +1,52 @@
+$primary: #55acee;
+$secondary: #9b9b9b;
+
+.box {
+  margin: .2rem 0 0 0;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  label {
+    font-size: 12px;
+    // color: $secondary;
+    z-index: 10;
+    padding-left: 0.5rem;
+    cursor: pointer;
+    // margin-right: 1rem;
+  }
+
+  input {
+    opacity: 0;
+    z-index: 5;
+    cursor: pointer;
+    position: relative;
+    // position: absolute;
+    left: 1rem;
+    &:checked {
+
+      ~ .check {
+        border-color: $primary;
+        box-shadow: 0px 0px 0px 15px $primary inset;
+        background-color: $primary;
+
+      }
+      ~ label {
+        color: $primary;
+      transform: scale(1.03);
+    }
+    }
+  }
+
+  .check {
+    width: 1rem;
+    height: 1rem;
+    // position: absolute;
+    position: relative;
+    border-radius: 12px;
+    background-color: inherit;
+    border: 2px solid $secondary;
+    box-shadow: 0px 0px 0px 0px $primary inset;
+    transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
+  }
+}

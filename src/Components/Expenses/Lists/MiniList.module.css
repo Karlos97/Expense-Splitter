@@ -1,0 +1,15 @@
+.list{
+    display: flex;
+    justify-content: left;
+margin-bottom: 1rem;
+}    
+.mini-list-paragraph{
+    font-size: .5rem;
+    margin: 0 .3rem 0 .3rem; 
+}
+.mini-list-paragraph:hover{
+    font-size: .65rem;
+}
+.paid-by{
+    color: red;
+}
