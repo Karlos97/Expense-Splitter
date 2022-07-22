@@ -8,7 +8,6 @@ import { useCardContext } from '../../../context/CardContext'
 import { uuid } from 'uuidv4'
 
 const AddPerson = (props) => {
-  //   const btnClassName = `${buttonClasses.button} ${buttonClasses["button-small"]}`
   const [name, setName] = useState('')
 
   const { addUser } = useCardContext()
@@ -18,8 +17,6 @@ const AddPerson = (props) => {
       name,
       id: uuid()
     })
-
-    // props.onClick(e)
   }
 
   return (

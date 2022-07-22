@@ -1,9 +1,5 @@
-import { Fragment, useState } from 'react'
 import classes from './Checkbox.module.scss'
 const Checkbox = props => {
-  // const [participants, setParticipants] = useState("");
-  // const [paidBy, setPaidBy] = useState("");
-
   return (
     <>
 

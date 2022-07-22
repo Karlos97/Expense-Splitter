@@ -49,7 +49,6 @@ $gray: #9b9b9b;
 }
 
 .form__label {
-  // position: absolute;
   top: 0;
   display: block;
   transition: 0.2s;
@@ -59,7 +58,6 @@ $gray: #9b9b9b;
 
 .form__field:focus {
   ~ .form__label {
-    // position: absolute;
     top: 0;
     display: block;
     transition: 0.2s;
@@ -80,7 +78,6 @@ $gray: #9b9b9b;
 .button{
   position: relative;
   left: 80%;
-// display: block;
   margin: 0 1rem 0 1rem;
   border-radius: 0.3rem;
   padding: 0 0.6rem 0 0.6rem;
@@ -94,15 +91,4 @@ $gray: #9b9b9b;
     max-height: 7rem;
   overflow-y: scroll;
   scrollbar-width: thin;
-  // scrollbar-color: gray white;
-  // scrollbar-width: thin;
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
-  // &{
-  //   -ms-overflow-style: none;  /* IE and Edge */
-  //   scrollbar-width: none;  /* Firefox */
-  // }
-
-
 }

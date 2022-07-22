@@ -6,8 +6,6 @@ import buttonClasses from '../../UI/Button.module.scss'
 import classes from './ListItem.module.css'
 
 const ListItem = props => {
-// console.log(props)
-
   return (
 
     <div className={classes.item}>
@@ -16,7 +14,6 @@ const ListItem = props => {
         <li onClick={() => props.onShowUserSummary(props.id)}>{props.label} {props.itemCost}{props.currency}</li>
 
       </div>
-      {/* <Button type='button'class={buttonClasses['button-small']}>X</Button> */}
       <Button
         type='button'
         class={`${classes.button} ${buttonClasses.button} 

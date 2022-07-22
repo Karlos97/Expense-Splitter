@@ -1,109 +1,90 @@
-import React, { Fragment, useEffect, useState, useRef } from "react";
-import Button from "../../UI/Button";
+import React, { useState } from 'react'
+import Button from '../../UI/Button'
 
-import Modal from "../../UI/Modal";
-import classes from "./AddExpense.module.scss";
-import buttonClasses from "../../UI/Button.module.scss";
-import Checkbox from "../../UI/Checkbox";
-import SelectInput from "../../UI/SelectInput";
-import { useCardContext } from "../../../context/CardContext";
-import { uuid } from "uuidv4";
-
-// const usersList = ["Maciek", "Tomek", "Ania","Maciek", "Tomek", "Ania","Maciek", "Tomek", "Ania"];
-{
-  /* <SelectInput usersList={usersList}/> */
-}
+import Modal from '../../UI/Modal'
+import classes from './AddExpense.module.scss'
+import buttonClasses from '../../UI/Button.module.scss'
+import Checkbox from '../../UI/Checkbox'
+import SelectInput from '../../UI/SelectInput'
+import { useCardContext } from '../../../context/CardContext'
+import { uuid } from 'uuidv4'
 
 const AddExpense = (props) => {
-  //   const btnClassName = `${buttonClasses.button} ${buttonClasses["button-small"]}`
+  const [description, setDescription] = useState('')
+  const [cost, setCost] = useState('')
+  const [participants, setParticipants] = useState('')
+  const { usersList, addExpense } = useCardContext()
+  const [paidBy, setPaidBy] = useState(usersList[0]?.id)
+  const [uncheckedList, setUncheckedList] = useState('')
 
-  const [description, setDescription] = useState("");
-  const [cost, setCost] = useState("");
-  const [participants, setParticipants] = useState("");
-  const [isPaidFor, setIsPaidFor] = useState("");
-  const [isPaidOf, setIsPaidOf] = useState("");
-  const { usersList, addExpense, addUser, removeExpense } = useCardContext();
-  const [paidBy, setPaidBy] = useState(usersList[0].id);
-// potzeba mi ustawic wartosc startowa z checkboxa
-// potrzeba ustawic usera ktory w poprzednim kroku byl paidby
-// najlepiej ustawic funkcje, ktora automatycznie zaznacza checkbox jak wybierze sie opcje paidby
-//ale to funkcjonalnosc dodatkowa
-  const id = uuid();
+  const id = uuid()
   const handleAddExpense = (e) => {
     addExpense({
       description,
       cost,
       participants,
       paidBy,
-      id,
-    });
-  };
+      id
+    })
+  }
 
   const onHandleSetParticipants = (id, checked) => {
     if (checked) {
-      setParticipants([...participants, id]);
+      if (!participants.includes(id)) {
+        setParticipants([...participants, id])
+      }
     } else {
-      if (participants.includes(id)) {
+      setUncheckedList([...uncheckedList, id])
+      if (id !== paidBy && participants.includes(id)) {
         setParticipants(
           participants.filter((participantId) => participantId !== id)
-        );
+        )
       }
     }
-  };
+  }
 
-  // const exampleInput = useRef();
-  // const inputTest = () =>  setPaidBy(exampleInput.current.value)
-
-  // const inputTest = (e) => {
-
-  //  return e.current.value;
-
-  // }
-  // const handleSeclectInputValue = (e) => {
-  //   setPaidBy(e.currentTarget.value);
-  //   console.log(`event: ${e.currentTarget}`);
-  // };
   const checkBoxes = usersList.map((el) => {
     return (
       <Checkbox
         name={el.name}
         id={el.id}
+        key={el.id}
         participants={participants}
         onChange={onHandleSetParticipants}
       />
-    );
-  });
+    )
+  })
 
   return (
     <Modal onClose={props.onClose}>
       <h2>Add expense to expenses list</h2>
-      <div className={classes["expense-input"]}>
+      <div className={classes['expense-input']}>
         <input
-          type="input"
+          type='input'
           className={classes.form__field}
-          placeholder="expense"
-          name="expense"
-          id="expense"
+          placeholder='expense'
+          name='expense'
+          id='expense'
           value={description}
           onChange={(e) => setDescription(e.currentTarget.value)}
           required
         />
-        <label for="expense" className={classes.form__label}>
+        <label for='expense' className={classes.form__label}>
           Expense
         </label>
       </div>
-      <div className={classes["cost-input"]}>
+      <div className={classes['cost-input']}>
         <input
-          type="input"
+          type='input'
           className={classes.form__field}
-          placeholder="cost"
-          name="cost"
-          id="cost"
+          placeholder='cost'
+          name='cost'
+          id='cost'
           value={cost}
           onChange={(e) => setCost(e.currentTarget.value)}
           required
         />
-        <label for="cost" className={classes.form__label}>
+        <label for='cost' className={classes.form__label}>
           Cost
         </label>
       </div>
@@ -121,31 +102,30 @@ const AddExpense = (props) => {
       <SelectInput
         usersList={usersList}
         onChange={(e) => {
-          setPaidBy(e.currentTarget.value);
-          let addAlsoAsParticipant = 1;
-          participants.forEach((el) => {
-            console.log(`el: ${el} targetValue ${e.currentTarget.value}`)
-            // if (el === e.currentTarget.value && !addAlsoAsParticipant) {
-            if (el === e.currentTarget.value) {
-              addAlsoAsParticipant += 1;
-              console.log("zmieniam na true")
-            }
-          });
-          if (addAlsoAsParticipant < 2) {
-            setParticipants([...participants, e.currentTarget.value]);
+          setPaidBy(e.currentTarget.value)
+          if (!participants.includes(e.currentTarget.value)) {
+            setParticipants([...participants, e.currentTarget.value])
+          }
+          if (
+            uncheckedList.includes(paidBy) &&
+            e.currentTarget.value !== paidBy
+          ) {
+            setParticipants(
+              participants.filter((participantId) => participantId !== paidBy)
+            )
           }
         }}
       />
 
       <Button
-        type="button"
-        class={`${classes.button} ${buttonClasses.button} ${buttonClasses["button-small"]}`}
+        type='button'
+        class={`${classes.button} ${buttonClasses.button} ${buttonClasses['button-small']}`}
         onClick={handleAddExpense}
       >
         Add Expense
       </Button>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddExpense;
+export default AddExpense

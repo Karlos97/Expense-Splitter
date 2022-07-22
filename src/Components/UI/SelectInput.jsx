@@ -1,10 +1,7 @@
-import { Fragment, useState } from 'react'
 import classes from './SelectInput.module.scss'
 
 const SelectInput = (props) => {
-  // const [selectValue, setSelectValue] = useState()
   const paidByInput = props.usersList.map((el, i) => {
-
     return (
       <option value={el.id} key={el.id}>
         {el.name}

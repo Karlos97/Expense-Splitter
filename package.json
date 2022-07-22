@@ -1,5 +1,5 @@
 {
-  "name": "expense-splitter",
+  "name": "expenses-splitter",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://karlos97.github.io/expense-splitter",
@@ -44,5 +44,10 @@
   "devDependencies": {
     "node-sass": "^6.0.1",
     "standard": "^16.0.3"
+  },
+  "standard": {
+    "ignore": [
+      "/build/**/*.js"
+    ]
   }
 }
